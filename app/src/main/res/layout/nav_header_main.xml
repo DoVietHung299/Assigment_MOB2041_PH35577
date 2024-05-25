@@ -20,7 +20,7 @@
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/anhnend" />
+        app:srcCompat="@drawable/back" />
 
     <TextView
         android:layout_gravity="center"
