@@ -204,7 +204,7 @@ public class S_Adapter extends RecyclerView.Adapter<S_Adapter.SachHoder> impleme
         }
         return 0;
     }
-
+//SỬa chỗ này
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -214,14 +214,13 @@ public class S_Adapter extends RecyclerView.Adapter<S_Adapter.SachHoder> impleme
                 if (strSearch.isEmpty()) {
                     list = mlistOld;
                 } else {
-                    List<Sach> listtv = new ArrayList<>();
+                    List<Sach> filteredList = new ArrayList<>();
                     for (Sach sach : mlistOld) {
-                        if (sach.getTacgia().toLowerCase().contains(strSearch.toLowerCase())) {
-                            listtv.add(sach);
+                        if (sach.getTens().toLowerCase().contains(strSearch.toLowerCase())) {
+                            filteredList.add(sach);
                         }
-                        ;
                     }
-                    list = listtv;
+                    list = filteredList;
                 }
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = list;
@@ -234,8 +233,8 @@ public class S_Adapter extends RecyclerView.Adapter<S_Adapter.SachHoder> impleme
                 notifyDataSetChanged();
             }
         };
-
     }
+
 
     public class SachHoder extends RecyclerView.ViewHolder {
         TextView tv_ms, tv_mls, tv_tens, tv_gias, tv_tacgia;

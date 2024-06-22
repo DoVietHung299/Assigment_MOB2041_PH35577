@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="12dp"
-            android:hint="Password Old"
+            android:hint="Mật khẩu cũ"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="12dp"
-            android:hint="Password New"
+            android:hint="Mật khẩu mới"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="12dp"
-            android:hint="Enter Password"
+            android:hint="Nhập lại mật khẩu mới"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Save"
+        android:text="Lưu"
         app:layout_constraintEnd_toStartOf="@+id/btn_clear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="84dp"
-        android:text="Clear"
+        android:text="Thoát"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

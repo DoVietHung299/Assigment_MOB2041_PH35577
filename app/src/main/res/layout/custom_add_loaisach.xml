@@ -29,7 +29,7 @@
         android:ems="10"
         android:drawableLeft="@drawable/ic_baseline_connect_without_contact_24"
         android:drawablePadding="12dp"
-        android:hint="Thêm Nhà Cung Cấp"
+        android:hint="Thêm nhà cung cấp"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

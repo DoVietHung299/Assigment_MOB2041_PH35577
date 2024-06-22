@@ -75,6 +75,7 @@ public class QuanlithanhvienFragment extends Fragment {
                 builder.setView(view1);
                 builder.setTitle("                Thêm Thành Viên");
                 EditText ed_hoten = (EditText) view1.findViewById(R.id.ed_hotentvedit);
+                EditText ed_cccd = (EditText) view1.findViewById(R.id.ed_cccdtvedit);
                 EditText ed_namsinh = (EditText) view1.findViewById(R.id.ed_namstvedit);
                 AppCompatButton btn_them = (AppCompatButton) view1.findViewById(R.id.btn_themtvsua);
                 AppCompatButton btn_cle = (AppCompatButton) view1.findViewById(R.id.btn_clentvedit);
@@ -90,12 +91,14 @@ public class QuanlithanhvienFragment extends Fragment {
                         } else {
                             ThanhVien thanhVien = new ThanhVien();
                             thanhVien.setHoTenTV(ed_hoten.getText().toString());
+                            thanhVien.setCccd(ed_cccd.getText().toString());
                             thanhVien.setNamsinhTV(ed_namsinh.getText().toString());
                             long kq = vienDao.ADDTV(thanhVien);
                             if (kq > 0) {
                                 Toast.makeText(getActivity(), "Đã Thêm Thành viên", Toast.LENGTH_SHORT).show();
                                 ed_hoten.setText("");
                                 ed_namsinh.setText("");
+                                ed_cccd.setText("");
                                 model.getLiveData();
                                 adapter.notifyDataSetChanged();
                                 builder.dismiss();

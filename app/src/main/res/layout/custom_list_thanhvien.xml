@@ -43,6 +43,20 @@
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/tv_hotentv" />
 
+    <!-- TextView mới cho cccd -->
+    <TextView
+        android:id="@+id/tv_cccdtv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/img_edittv"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_namsinhtv" />
+    <!-- Kết thúc TextView mới cho cccd -->
+
     <ImageView
         android:id="@+id/img_deletetv"
         android:layout_width="30dp"
@@ -86,5 +100,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_edittv" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cccdtv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

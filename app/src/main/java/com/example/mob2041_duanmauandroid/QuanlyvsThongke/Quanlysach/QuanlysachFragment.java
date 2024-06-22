@@ -56,6 +56,8 @@ public class QuanlysachFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Khởi tạo các view và adapter
         rcl_sach = (RecyclerView) view.findViewById(R.id.rcl_sach);
         flb_sach = (FloatingActionButton) view.findViewById(R.id.fbl_ads);
         dao = new SachDao(getActivity());
@@ -67,11 +69,10 @@ public class QuanlysachFragment extends Fragment {
             public void onChanged(List<Sach> saches) {
                 adapter = new S_Adapter(getActivity(), saches, dao);
                 rcl_sach.setAdapter(adapter);
-//                rcl_sach.setItemAnimator(new ScaleInAnimator());
-//        //        adapter = new StudentAdapter(students, this);
-//              rcl_sach.setAdapter(new ScaleInAnimationAdapter(adapter));
             }
         });
+
+        // Thiết lập SearchView để lọc danh sách sách
         searchView = view.findViewById(R.id.id_serch);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -81,11 +82,13 @@ public class QuanlysachFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                // Lọc danh sách sách khi người dùng nhập văn bản
                 adapter.getFilter().filter(newText);
                 return false;
             }
         });
 
+        // Thiết lập FloatingActionButton để thêm sách
         flb_sach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +100,9 @@ public class QuanlysachFragment extends Fragment {
                 Spinner spns = (Spinner) view.findViewById(R.id.spin_lsach);
                 EditText ed_gias = (EditText) view.findViewById(R.id.giasach);
                 EditText ed_tacgia = (EditText) view.findViewById(R.id.ed_tacgia);
-                builder.setTitle("                Thêm Sách");
+                builder.setTitle("Thêm Sách");
+
+                // Khởi tạo danh sách loại sách và adapter cho spinner
                 loaiSaches = new ArrayList<>();
                 loaiSachDao = new LoaiSachDao(getContext());
                 loaiSaches = (ArrayList<LoaiSach>) loaiSachDao.GETLS();
@@ -107,7 +112,7 @@ public class QuanlysachFragment extends Fragment {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         mals = loaiSaches.get(position).getMaLS();
-                        Toast.makeText(getContext(), "Chọn" + loaiSaches.get(position).getTenLS(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Chọn " + loaiSaches.get(position).getTenLS(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -155,7 +160,6 @@ public class QuanlysachFragment extends Fragment {
                 builder.create().show();
             }
         });
-
     }
 
     @Override

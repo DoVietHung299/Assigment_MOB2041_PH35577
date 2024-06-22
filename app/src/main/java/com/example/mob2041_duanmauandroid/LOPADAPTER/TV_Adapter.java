@@ -62,15 +62,18 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
             holder.tv_maTV.setText("Mã TV: " + thanhVien.getIDTV() + "");
             holder.tv_hoten.setText("Họ Và Tên: " + thanhVien.getHoTenTV());
             holder.tv_namsinh.setText("Năm Sinh: " + thanhVien.getNamsinhTV());
+            holder.tv_cccd.setText("Căn cước công dân: " + thanhVien.getCccd());
         }
         if (position % 2 == 1 || position % 2 != 0) {
             holder.tv_maTV.setTextColor(Color.GREEN);
             holder.tv_hoten.setTextColor(Color.GREEN);
             holder.tv_namsinh.setTextColor(Color.GREEN);
+            holder.tv_cccd.setTextColor(Color.GREEN);
         } else {
             holder.tv_maTV.setTextColor(Color.RED);
             holder.tv_hoten.setTextColor(Color.RED);
             holder.tv_namsinh.setTextColor(Color.RED);
+            holder.tv_cccd.setTextColor(Color.RED);
         }
 
         holder.img_dele.setOnClickListener(new View.OnClickListener() {
@@ -116,21 +119,24 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
                 dialog.setView(view);
                 dialog.setTitle("                Sửa Thành Viên ");
                 EditText ed_edhotentv = view.findViewById(R.id.ed_hotentvedit);
+                EditText ed_cccd = view.findViewById(R.id.ed_cccdtvedit);
                 EditText ed_namsinhtv = view.findViewById(R.id.ed_namstvedit);
                 ed_edhotentv.setText(thanhVien.getHoTenTV());
                 ed_namsinhtv.setText(thanhVien.getNamsinhTV());
+                ed_cccd.setText(thanhVien.getCccd());
                 AppCompatButton btn_save = view.findViewById(R.id.btn_themtvsua);
                 AppCompatButton btn_huy = view.findViewById(R.id.btn_clentvedit);
                 dialog.setCancelable(true);
                 btn_save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (thanhVien.getHoTenTV().equals(ed_edhotentv.getText().toString()) && thanhVien.getNamsinhTV().equals(ed_namsinhtv.getText().toString())) {
+                        if (thanhVien.getHoTenTV().equals(ed_edhotentv.getText().toString()) && thanhVien.getNamsinhTV().equals(ed_namsinhtv.getText().toString()) &&  thanhVien.getCccd().equals(ed_cccd.getText().toString()) ) {
                             Toast.makeText(context.getApplicationContext(), "Không Có Gì Thay Đổi \n Sửa Thất Bại!", Toast.LENGTH_SHORT).show();
                         } else {
                             vienDao = new ThanhVienDao(context);
                             thanhVien.setHoTenTV(ed_edhotentv.getText().toString());
                             thanhVien.setNamsinhTV(ed_namsinhtv.getText().toString());
+                            thanhVien.setCccd(ed_cccd.getText().toString());
                             long kq = vienDao.UPDATETV(thanhVien);
                             if (kq > 0) {
                                 list.clear();
@@ -138,6 +144,7 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
                                 notifyDataSetChanged();
                                 ed_edhotentv.setText("");
                                 ed_namsinhtv.setText("");
+                                ed_cccd.setText("");
                                 dialog.dismiss();
                                 Toast.makeText(context.getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();
                             } else {
@@ -199,12 +206,13 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
 
     public class tvhoder extends RecyclerView.ViewHolder {
 
-        TextView tv_maTV, tv_hoten, tv_namsinh, tv_vtri;
+        TextView tv_maTV, tv_hoten, tv_namsinh, tv_vtri, tv_cccd;
         ImageView img_dele, img_edi;
         ConstraintLayout constraintLayout;
 
         public tvhoder(@NonNull @NotNull View itemView) {
             super(itemView);
+            tv_cccd = itemView.findViewById(R.id.tv_cccdtv);
             tv_maTV = itemView.findViewById(R.id.tv_idtv);
             tv_hoten = itemView.findViewById(R.id.tv_hotentv);
             tv_namsinh = itemView.findViewById(R.id.tv_namsinhtv);

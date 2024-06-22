@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CreateData extends SQLiteOpenHelper {
     private static final String DB_NAME = "PNLINB.db";
-    private static final int VERSION = 2;
+    private static final int VERSION = 3; // Đổi phiên bản từ 2 thành 3
 
     public CreateData(Context context) {
         super(context, DB_NAME, null, VERSION);
@@ -14,28 +14,32 @@ public class CreateData extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //Bảng Nhân Viên
+        // Bảng Nhân Viên
         String tb_nv =
                 "create table NhanVien (" +
                         "maNV TEXT PRIMARY KEY UNIQUE, " +
                         "hoTen TEXT NOT NULL, " +
                         "matKhau TEXT NOT NULL)";
         db.execSQL(tb_nv);
-        //Bảng Thành viên
+
+        // Bảng Thành viên - Thêm trường cccd
         String tb_tv =
                 "create table ThanhVien (" +
                         "maTV INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "hoTen TEXT NOT NULL, " +
-                        "namSinh TEXT NOT NULL)";
+                        "namSinh TEXT NOT NULL, " +
+                        "cccd TEXT UNIQUE NOT NULL)"; // Thêm trường cccd
         db.execSQL(tb_tv);
-        //Bảng Loại sách
+
+        // Bảng Loại sách
         String tb_ls =
                 "create table LoaiSach (" +
                         "maLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "nhacc TEXT NOT NULL, " +
                         "tenLoai TEXT UNIQUE NOT NULL)";
         db.execSQL(tb_ls);
-        //Bảng Sách
+
+        // Bảng Sách
         String tb_S =
                 "create table Sach (" +
                         "maSach INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -44,7 +48,8 @@ public class CreateData extends SQLiteOpenHelper {
                         "tacgia TEXT NOT NULL, " +
                         "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
         db.execSQL(tb_S);
-        //Bảng Phiếu Mượn
+
+        // Bảng Phiếu Mượn
         String tb_pm =
                 "create table PhieuMuon (" +
                         "maPM INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -62,17 +67,19 @@ public class CreateData extends SQLiteOpenHelper {
         // Xóa khi update phiên bản
         String dropTableThuThu = "drop table if exists NhanVien";
         db.execSQL(dropTableThuThu);
+
         String dropTableThanhVien = "drop table if exists ThanhVien";
         db.execSQL(dropTableThanhVien);
+
         String dropTableLoaiSach = "drop table if exists LoaiSach";
         db.execSQL(dropTableLoaiSach);
+
         String dropTableSach = "drop table if exists Sach";
         db.execSQL(dropTableSach);
+
         String dropTablePhieuMuon = "drop table if exists PhieuMuon";
         db.execSQL(dropTablePhieuMuon);
 
         onCreate(db);
     }
-
-
 }

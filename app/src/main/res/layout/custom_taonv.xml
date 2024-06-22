@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawablePadding="12dp"
-            android:hint="Username"
+            android:hint="Tài khoản"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawablePadding="12dp"
-            android:hint="Fist and Last name"
+            android:hint="Họ và tên"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="12dp"
-            android:hint="Password"
+            android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="12dp"
-            android:hint="Enter the password"
+            android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" />
